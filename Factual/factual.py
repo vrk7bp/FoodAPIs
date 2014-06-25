@@ -2,8 +2,8 @@
 
 from factual import Factual
 
-KEY = "YOUR_KEY"
-SECRET = "YOUR_SECRET"
+KEY = "4RVd3PBB9wVnoiRTUbGe5bdAXVTCVfClPKKvarLu"
+SECRET = "IK4klSaSGQnWlkYJQIDYLjU5QEhmGIPxZqFdc83L"
 
 def main():
     factual = Factual(KEY, SECRET)
