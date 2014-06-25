@@ -32,10 +32,15 @@ SEARCH_PATH = '/v2/search/'
 BUSINESS_PATH = '/v2/business/'
 
 # OAuth credential placeholders that must be filled in by users.
-CONSUMER_KEY = None
-CONSUMER_SECRET = None
-TOKEN = None
-TOKEN_SECRET = None
+CONSUMER_KEY = "mcoArGtHYkvFHdFWUPaXXA"
+CONSUMER_SECRET = "DVjJ16rX-i2fk7dxFCaHQSeKX9Y"
+TOKEN = "vwiXkBDp5ltw1QMtudlfZWRc4gBOn4z3"
+TOKEN_SECRET = "1zQoOHhEySNKqViL2CiTHjyl6fY"
+
+# CONSUMER_KEY = None
+# CONSUMER_SECRET = None
+# TOKEN = None
+# TOKEN_SECRET = None
 
 
 def request(host, path, url_params=None):
@@ -74,6 +79,7 @@ def request(host, path, url_params=None):
     print 'Querying {0} ...'.format(url)
 
     conn = urllib2.urlopen(signed_url, None)
+    print "2"
     try:
         response = json.loads(conn.read())
     finally:
@@ -120,7 +126,7 @@ def query_api(term, location):
         location (str): The location of the business to query.
     """
     response = search(term, location)
-
+    print "here"
     businesses = response.get('businesses')
 
     if not businesses:
@@ -151,6 +157,7 @@ def main():
     try:
         query_api(input_values.term, input_values.location)
     except urllib2.HTTPError as error:
+        print error
         sys.exit('Encountered HTTP error {0}. Abort program.'.format(error.code))
 
 
