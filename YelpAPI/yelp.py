@@ -34,8 +34,8 @@ BUSINESS_PATH = '/v2/business/'
 # OAuth credential placeholders that must be filled in by users.
 CONSUMER_KEY = "mcoArGtHYkvFHdFWUPaXXA"
 CONSUMER_SECRET = "DVjJ16rX-i2fk7dxFCaHQSeKX9Y"
-TOKEN = "vwiXkBDp5ltw1QMtudlfZWRc4gBOn4z3"
-TOKEN_SECRET = "1zQoOHhEySNKqViL2CiTHjyl6fY"
+TOKEN = "8UOAcJeTBsXGxsqVFAXuixp3T9nMaGcl"
+TOKEN_SECRET = "wqoFRuG_ywRrPs36IH96hnetGZM"
 
 # CONSUMER_KEY = None
 # CONSUMER_SECRET = None
