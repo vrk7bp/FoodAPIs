@@ -11,6 +11,10 @@ FACTUAL_SECRET = "IK4klSaSGQnWlkYJQIDYLjU5QEhmGIPxZqFdc83L"
 
 yelp_api = YelpAPI("mcoArGtHYkvFHdFWUPaXXA", "DVjJ16rX-i2fk7dxFCaHQSeKX9Y", "8UOAcJeTBsXGxsqVFAXuixp3T9nMaGcl", "wqoFRuG_ywRrPs36IH96hnetGZM")
 
+
+#Access the Yelp API. From our point of view, the first line (response = ...) is the most important. We are going to want to change what is in
+# term, sort, and category_filter based on the users restrictions. ll should be easy to pull from the phone, otherwise we can ask for the zip 
+# code in case they have the GPS shut off.
 def getYelpResults(locationLatLong):
 	response = yelp_api.search_query(term="buffet", ll=locationLatLong, sort=2, limit=3, category_filter="restaurants") # term='food', location='charlottesville, va',
 	
@@ -42,13 +46,16 @@ def getYelpResults(locationLatLong):
 
 	return phoneNumberList
 
+# The Factual API takes a very specific format to phone numbers [(XXX) XXX-XXXX], so this method takes care of converting from Yelp number to
+# Factual format
 def formatPhoneNumberForFactual(phoneNumber):
 	listOfNums = phoneNumber.split("-")
 	stringForFactual = "(" + listOfNums[1] + ")" + " " + listOfNums[2] + "-" + listOfNums[3]
 	return stringForFactual
 
 
-# Phone Number has to be in (XXX) XXX-XXXX format
+# The Factual API isn't as accurate as the Yelp API, in that if there is a discrepancy between Yelp and Factual that Yelp is usually right.
+# However is provides a lot more information on restaurants so we should use it to gather as much as we can.
 def getFactualData(phoneNumber):
 	factual = Factual(FACTUAL_KEY, FACTUAL_SECRET)
 	table = factual.table('restaurants-us')
